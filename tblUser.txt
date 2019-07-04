@@ -1,0 +1,51 @@
+drop table if exists TBLUSER;
+/*==============================================================*/
+/* Table: TBLUSER                                               */
+/*==============================================================*/
+create table TBLUSER
+(
+   USERID               varchar(10) not null,
+   KDLEVEL              varchar(10),
+   KDPEGAWAI            varchar(50),
+   NMPEGAWAI            varchar(100),
+   PASS                 varchar(8),
+   NMLEVEL              varchar(10),
+   STSUSER              varchar(10),
+   primary key (USERID)
+);
+
+alter table TBLUSER add constraint FK_REFERENCE_6 foreign key (KDLEVEL)
+      references TBLLEVEL (KDLEVEL) on delete restrict on update restrict;
+
+alter table TBLUSER add constraint FK_REFERENCE_7 foreign key (KDPEGAWAI)
+      references TBLPEGAWAI (KDPEGAWAI) on delete restrict on update restrict;
+
+
+drop table if exists TBLLEVEL;
+/*==============================================================*/
+/* Table: TBLLEVEL                                              */
+/*==============================================================*/
+create table TBLLEVEL
+(
+   KDLEVEL              varchar(10) not null,
+   NMLEVEL              varchar(10),
+   KREDENSIAL           varchar(10),
+   STSLEVEL             char(2),
+   primary key (KDLEVEL)
+);
+
+
+drop table if exists TBLPEGAWAI;
+/*==============================================================*/
+/* Table: TBLPEGAWAI                                            */
+/*==============================================================*/
+create table TBLPEGAWAI
+(
+   KDPEGAWAI            varchar(50) not null,
+   NMPEGAWAI            varchar(100),
+   JNSKELAMIN           char(2),
+   TGLLAHIR             datetime,
+   KATPEGAWAI           varchar(50),
+   STSAKTIF             char(2),
+   primary key (KDPEGAWAI)
+);
