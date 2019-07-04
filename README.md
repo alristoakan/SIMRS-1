@@ -1,0 +1,2 @@
+# draftTabel
+rancangan tabel database
